@@ -1,3 +1,7 @@
+import java.util.ArrayList;  
+import java.util.Arrays;
+import java.util.List;
+
 /*
  * This file defines an abstract class named Bag.
  * In this exercise, you will be writing a larger class according to
@@ -14,7 +18,10 @@ public abstract class Bag {
      *       - an array of Strings named contents
      */
 
-
+    private String color;
+    private int numberOfContents;
+    private int capacity;
+    private String[] contents;
 
 
     /*
@@ -26,8 +33,10 @@ public abstract class Bag {
      * be empty (e.g. numberOfContents is 0 and an empty String array for
      * its contents.)
      */
-
-
+    public Bag(String color, int capacity){
+        color = this.color;
+        capacity = this.capacity;
+    }
 
 
     /*
@@ -38,16 +47,26 @@ public abstract class Bag {
      *           - getCapacity
      */
 
+    public String getColor(){
+        return color;
+    }
 
+    public int getNumberOfContents(){
+        return numberOfContents;
+    }
 
+    public int getCapacity(){
+        return capacity;
+    }
 
     /*
      * TODO: Create a setter function called setColor which sets the
      *       color of this bag to the given color.
      */
 
-
-
+    public void setColor(String color){
+        color = this.color;
+    }
 
 
     /*
@@ -61,7 +80,17 @@ public abstract class Bag {
      *       and false otherwise.
      */
 
-
+    public boolean addItem(String item){
+        if (numberOfContents < capacity){
+            numberOfContents += 1;
+            List<String>l = new ArrayList<String>(  
+                Arrays.asList(contents));
+            l.add(item);
+            contents = l.toArray(contents);
+            return true;
+        }
+        return false;
+    }
 
 
 
@@ -76,8 +105,13 @@ public abstract class Bag {
      * @return
      */
 
-
-
+    public String popItem(){
+        if (numberOfContents == 0){
+            return null;
+        }
+        numberOfContents -= 1;
+        return contents[numberOfContents-1];
+    }
 
 
     /**
@@ -87,7 +121,7 @@ public abstract class Bag {
      */
     public void increaseCapacity(int n) {
         // TODO: Implement this method.
-
+        capacity += n;
     }
 
     /**
