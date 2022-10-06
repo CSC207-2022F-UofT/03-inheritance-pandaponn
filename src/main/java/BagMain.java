@@ -23,7 +23,9 @@ class BagMain {
                         hb.enhance();
                         hb.enhance();
                     }
-                    hb.enhance();
+                    else {
+                        hb.enhance();
+                    }
                 } else if (b instanceof CrossbodyBag){
                     CrossbodyBag cbb = (CrossbodyBag)b;
                     cbb.enhance();

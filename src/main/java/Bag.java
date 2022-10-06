@@ -34,8 +34,8 @@ public abstract class Bag {
      * its contents.)
      */
     public Bag(String color, int capacity){
-        color = this.color;
-        capacity = this.capacity;
+        this.color = color;
+        this.capacity = capacity;
     }
 
 
@@ -65,7 +65,7 @@ public abstract class Bag {
      */
 
     public void setColor(String color){
-        color = this.color;
+        this.color = color;
     }
 
 
@@ -83,16 +83,20 @@ public abstract class Bag {
     public boolean addItem(String item){
         if (numberOfContents < capacity){
             numberOfContents += 1;
-            List<String>l = new ArrayList<String>(  
+            if (contents == null){
+                contents = new String[1];
+                contents[0] = item;
+                return true;
+            } else {
+                List<String>l = new ArrayList<String>(  
                 Arrays.asList(contents));
-            l.add(item);
-            contents = l.toArray(contents);
-            return true;
+                l.add(item);
+                contents = l.toArray(contents);
+                return true;
+            }
         }
         return false;
     }
-
-
 
     /**
      * TODO: Create a method called popItem that returns a String.
@@ -110,9 +114,8 @@ public abstract class Bag {
             return null;
         }
         numberOfContents -= 1;
-        return contents[numberOfContents-1];
+        return contents[numberOfContents];
     }
-
 
     /**
      * Increase this bag's capacity by n.

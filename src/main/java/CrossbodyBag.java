@@ -36,7 +36,7 @@
 
     public CrossbodyBag(String color, int capacity, int numberOfStraps){
         super(color, capacity);
-        numberOfStraps = this.numberOfStraps;
+        this.numberOfStraps = numberOfStraps;
     }
 
     public int getNumberOfStraps(){
